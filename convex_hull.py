@@ -63,20 +63,19 @@ def convex_hull(points):
     return lower[:-1] + upper[:-1]
 
 
-# Generate a random set of points
-np.random.seed(42)  # Set seed for reproducibility
-points = np.random.rand(30, 2) * 10  # Generate 30 random points in a 10x10 space
+# Generate a random set of points, using seed for reproducibility
+np.random.seed(327) 
+points = np.random.rand(30, 2) * 10  
 
 # Compute the convex hull
 hull = convex_hull(points.tolist())
 
 # Plot the points
-plt.scatter(*zip(*points), label="Points", color="orange", alpha=0.6)
+plt.scatter(*zip(*points), label="Points", color="blue", alpha=0.6)
 
 # Plot the convex hull (connect back to the first point to close the shape)
 plt.plot(*zip(*(hull + [hull[0]])), 'r-', label="Convex Hull", linewidth=1)
 
-# Format the plot
 plt.legend()
 plt.xlabel("X-axis")
 plt.ylabel("Y-axis")
