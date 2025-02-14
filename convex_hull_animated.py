@@ -1,6 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.animation as animation
+from PIL import Image
+import os
 
 
 def cross_product(o, a, b):
@@ -35,7 +37,9 @@ def convex_hull_animated(points):
     hull = lower[:-1] + upper[:-1]
     
     # Display completed hull at the end
-    animation_steps.append((hull, None, "final"))
+    final_steps = 10  # Additional frames
+    for _ in range(final_steps):
+        animation_steps.append((hull, None, "final"))
 
     return hull, animation_steps
 
@@ -91,3 +95,4 @@ def update(frame):
 ani = animation.FuncAnimation(fig, update, frames=len(steps), interval=500, repeat=False)
 plt.legend()
 plt.show()
+
