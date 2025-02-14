@@ -31,7 +31,12 @@ def convex_hull_animated(points):
         upper.append(p)
         animation_steps.append((upper.copy(), p, "add"))
 
+    # Full convex hull
     hull = lower[:-1] + upper[:-1]
+    
+    # Display completed hull at the end
+    animation_steps.append((hull, None, "final"))
+
     return hull, animation_steps
 
 
@@ -54,31 +59,32 @@ ax.set_ylabel("Y-axis")
 sc = ax.scatter(*zip(*points), label="Points", color="blue", alpha=0.6)
 
 # Line to display the convex hull
-hull_line, = ax.plot([], [], 'r-', linewidth=1, label="Convex Hull")
+hull_contour, = ax.plot([], [], 'r-', linewidth=1, label="Convex Hull")
 
 # Highlighting points being processed
 active_point, = ax.plot([], [], 'mo', markersize=8, label="Current Point")
 removed_point, = ax.plot([], [], 'co', markersize=8, label="Removed Point")
 
 
-# Animation
+# Animation frames
 def update(frame):
     current_hull, p, action = steps[frame]
     hull_x, hull_y = zip(*current_hull)
 
-    # Update hull line
-    hull_line.set_data(hull_x + (hull_x[0],), hull_y + (hull_y[0],))
+    # Update hull contour
+    hull_contour.set_data(hull_x + (hull_x[0],), hull_y + (hull_y[0],))
 
-    # Highlight active point (ensuring it's a sequence)
-    active_point.set_data([p[0]], [p[1]])
-
-    # Highlight removed point if applicable (ensuring it's a sequence)
-    if action == "remove":
-        removed_point.set_data([p[0]], [p[1]])
-    else:
+    # Highlight active point if not the final frame
+    if action == "final":
+        hull_contour.set_linestyle("-")
+        active_point.set_data([], [])
         removed_point.set_data([], [])
+    else:
+        hull_contour.set_linestyle("--")
+        active_point.set_data([p[0]], [p[1]] if p else [])
+        removed_point.set_data([p[0]], [p[1]] if action == "remove" else [])
 
-    return hull_line, active_point, removed_point
+    return hull_contour, active_point, removed_point
 
 
 # Create and display animation
