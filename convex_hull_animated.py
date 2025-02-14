@@ -35,8 +35,8 @@ def convex_hull_animated(points):
     return hull, animation_steps
 
 
-# Generate random points
-np.random.seed(42)
+# Generate random points, using seed for reproducibility 
+np.random.seed(50)
 points = np.random.rand(30, 2) * 10
 
 # Compute convex hull with animation steps
@@ -57,8 +57,8 @@ sc = ax.scatter(*zip(*points), label="Points", color="blue", alpha=0.6)
 hull_line, = ax.plot([], [], 'r-', linewidth=1, label="Convex Hull")
 
 # Highlighting points being processed
-active_point, = ax.plot([], [], 'go', markersize=8, label="Current Point")
-removed_point, = ax.plot([], [], 'ro', markersize=8, label="Removed Point")
+active_point, = ax.plot([], [], 'mo', markersize=8, label="Current Point")
+removed_point, = ax.plot([], [], 'co', markersize=8, label="Removed Point")
 
 
 # Animation
@@ -81,9 +81,7 @@ def update(frame):
     return hull_line, active_point, removed_point
 
 
-# Create animation
+# Create and display animation
 ani = animation.FuncAnimation(fig, update, frames=len(steps), interval=500, repeat=False)
-
-# Display animation
 plt.legend()
 plt.show()
