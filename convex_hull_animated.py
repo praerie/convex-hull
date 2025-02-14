@@ -1,8 +1,8 @@
 import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib.animation as animation
-from PIL import Image
-import os
+# from PIL import Image
+# import os
 
 
 def cross_product(o, a, b):
@@ -96,3 +96,11 @@ ani = animation.FuncAnimation(fig, update, frames=len(steps), interval=500, repe
 plt.legend()
 plt.show()
 
+# Create GIF
+# save_path = r"***\convex-hull\assets\convex_hull_animation.gif"
+
+# try:
+#     ani.save(save_path, writer="pillow", fps=10)
+#     print(f"GIF saved: {save_path}")
+# except Exception as e:
+#     print(f"Error saving GIF: {e}")
