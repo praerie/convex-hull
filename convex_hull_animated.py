@@ -44,8 +44,8 @@ hull, steps = convex_hull_animated(points.tolist())
 
 # Set up figure
 fig, ax = plt.subplots()
-ax.set_xlim(0, 10)
-ax.set_ylim(0, 10)
+ax.set_xlim(0, 12)
+ax.set_ylim(0, 12)
 ax.set_title("Convex Hull Construction (Animated)")
 ax.set_xlabel("X-axis")
 ax.set_ylabel("Y-axis")
