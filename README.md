@@ -22,7 +22,7 @@ The result is the smallest convex polygon enclosing all given points:
 
 ## Animated Convex Hull Construction
 
-[convex_hull_animated.py](/convex_hull_animated.py) visualizes the step-by-step construction of a convex hull using Graham's scan. Each animation frame highlights a point as it is evaluated for inclusion: it is added if it maintains a counterclockwise turn or removed if it introduces a concave (clockwise) turn.
+[convex_hull_animated.py](/convex_hull_animated.py) visualizes the step-by-step construction of a convex hull using Andrew's Monotone Chain. Each animation frame highlights a point as it is evaluated for inclusion: it is added if it maintains a counterclockwise turn or removed if it introduces a concave (clockwise) turn.
 
 ### Steps:
 1. Sort points by x-coordinate (and y if tied) to establish a processing order.
