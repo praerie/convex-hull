@@ -1,10 +1,10 @@
-﻿# Hull Processing
+# Hull Processing
 
 Geometry processing playground focused on convex hull construction, implemented in Python and visualized with `matplotlib`.
 
 ## Convex Hull Construction
 
-[convex_hull.py](/convex_hull.py) computes the convex hull of a set of 2D points using Andrew's Monotone Chain.
+[convex_hull.py](/convex_hull.py) computes the convex hull of a set of 2D points.
 
 ### Steps:
 
@@ -15,14 +15,14 @@ Geometry processing playground focused on convex hull construction, implemented 
 The result is the smallest convex polygon enclosing all given points:
 
 <p align="center">
-  <img src="assets/grahams_scan.png" alt="Convex Hull" width="550">
+  <img src="assets/convex_basic.png" alt="Convex Hull" width="550">
 </p>
 
 #### Processing time: `O(n log n)`, as the `O(n log n)` sorting step dominates the `O(n)` hull-building phase.
 
 ## Animated Convex Hull Construction
 
-[convex_hull_animated.py](/convex_hull_animated.py) visualizes the step-by-step construction of a convex hull using Andrew's Monotone Chain. Each animation frame highlights a point as it is evaluated for inclusion: it is added if it maintains a counterclockwise turn or removed if it introduces a concave (clockwise) turn.
+[convex_hull_animated.py](/convex_hull_animated.py) visualizes the step-by-step construction of a convex hull using Graham's scan. Each animation frame highlights a point as it is evaluated for inclusion: it is added if it maintains a counterclockwise turn or removed if it introduces a concave (clockwise) turn.
 
 ### Steps:
 1. Sort points by x-coordinate (and y if tied) to establish a processing order.
@@ -43,8 +43,7 @@ The dashed red contour dynamically updates as the hull forms, and once all point
 
 [defect_detection.py](/defect_detection.py) identifies convexity defects, i.e., concave points where a shape deviates inward from its convex hull. These defects are detected by identifying concave points and visualizing their shortest distance to the hull.
 
-### Steps:
-
+Steps:
 1. Compute the convex hull of a given set of 2D points.
 2. Identify concave points (not part of the convex hull).
 3. Determine the shortest distance from each concave point to its nearest hull edge.
