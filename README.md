@@ -2,9 +2,9 @@
 
 Geometry processing playground focused on convex hull construction, implemented in Python and visualized with `matplotlib`.
 
-## Graham's Scan: Convex Hull Construction
+## Convex Hull Construction
 
-[convex_hull.py](/convex_hull.py) computes the convex hull of a set of 2D points using Graham's scan algorithm.
+[convex_hull.py](/convex_hull.py) computes the convex hull of a set of 2D points using Andrew's Monotone Chain.
 
 ### Steps:
 
