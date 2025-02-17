@@ -28,7 +28,7 @@ def cross_product(o, a, b):
 
 
 def convex_hull(points):
-    """Computes the convex hull of a given set of 2D points using Graham's scan algorithm.
+    """Computes the convex hull of a given set of 2D points.
 
     The algorithm constructs the convex hull in two phases,
     the lower hull and the upper hull.
@@ -79,5 +79,5 @@ plt.plot(*zip(*(hull + [hull[0]])), 'r-', label="Convex Hull", linewidth=1)
 plt.legend()
 plt.xlabel("X-axis")
 plt.ylabel("Y-axis")
-plt.title("Convex Hull Visualization (Graham's Scan Algorithm)")
+plt.title("Convex Hull Visualization")
 plt.show()
